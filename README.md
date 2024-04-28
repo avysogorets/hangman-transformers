@@ -1,4 +1,4 @@
-## Hangman
+## Hangman with Transformers
 In Hangman, you guess a word where all of its letters are initially masked. In each turn, you name a letter and,
 if it appears in the word, all instances of it are unmasked. If it does not, you incur a penalty loss. You lose the game if
 your penalty reaches 6 before you guess the word and win otherwise.
