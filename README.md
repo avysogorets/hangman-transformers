@@ -3,6 +3,9 @@ In Hangman, you guess a word where all of its letters are initially masked. In e
 if it appears in the word, all instances of it are unmasked. If it does not, you incur a penalty loss. You lose the game if
 your penalty reaches 6 before you guess the word and win otherwise.
 
+One naive approach is to guess letters by frequency in a dynamic dictionary that narrows down as we reveal the word. For example, provided with a pattern ```_ _ a _```, we would guess the letter that most frrequently appears in words conforming to this pattern. While this method works
+rather well on the training dictionary, it fails miserbaly on other words (reaching around ~18% success rate). Therefore, when test words are not present in the training collection of words, we need to address the problem from a different angle.
+
 ### Strategy
 The key to playing Hangman, to a large extent, lies in extracting patterns of natural language such as word structure and grammar. 
 Thus, we adopt the NLP framework and attempt to solve the task with a transformer. The vocabulary will consist of 26 
@@ -15,3 +18,5 @@ modeling, we mask *one* random letter in each word with the goal of predicting i
 - ***Stage 2:*** since the model will often be presented with more than one blanks in one word, we need to finetune it on the distribution 
 of inputs as close to the real game scenario as possible. To this end, for each training word, we randomly mask out all instances of some
  subcollection of its letters and perform a multi-label classification with the goal of predicting all of those masked letters.
+
+
