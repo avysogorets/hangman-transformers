@@ -15,7 +15,7 @@ In fact, it is common to train LLMs using "masked language modeling", which is s
 is two-stage:
 - ***Stage 1:*** we first pre-train a transformer and teach it to identify patterns of letters in words. To this end, akin to masked language 
 modeling, we mask *one* random letter in each word with the goal of predicting it.
-- ***Stage 2:*** since the model will often be presented with more than one blanks in one word, we need to finetune it on the distribution 
+- ***Stage 2:*** since the model will often be presented with more than one blanks in a word, we need to finetune it on the distribution 
 of inputs as close to the real game scenario as possible. To this end, for each training word, we randomly mask out all instances of some
  subcollection of its letters and perform a multi-label classification with the goal of predicting all of those masked letters.
 
